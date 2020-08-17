@@ -85,7 +85,7 @@ items:
 - apiVersion: apps/v1
   kind: Deployment
   metadata:    
-    name: deployment-db
+    name: backend-db
     namespace: default    
   spec:    
     replicas: 1    
@@ -107,7 +107,7 @@ items:
 - apiVersion: apps/v1
   kind: Deployment
   metadata:
-    name: deployment-web
+    name: frontend-web
     namespace: default
   spec:
     replicas: 1
@@ -132,7 +132,7 @@ items:
 - apiVersion: apps/v1
   kind: Deployment
   metadata:
-    name: deployment-words
+    name: api-web
   spec:
     replicas: 5
     selector:
