@@ -1,6 +1,7 @@
 apiVersion: v1
 items:
-# Service: hej-verden-db
+# Services: 
+# hej-verden-db
 - apiVersion: v1
   kind: Service
   metadata:
@@ -14,31 +15,7 @@ items:
       targetPort: 55555
     selector:
       app: db
-# Service: hej-verden-web, 'ekstern' adresse
-- apiVersion: v1
-  kind: Service
-  metadata:
-    labels:
-      app: service-web-published
-    name: web-published
-  spec:
-    clusterIP: 10.109.33.31
-    externalTrafficPolicy: Cluster
-    ports:
-    - name: 8094-tcp
-      nodePort: 31389
-      port: 8094
-      protocol: TCP
-      targetPort: 80
-    selector:
-      app: web
-    sessionAffinity: None
-    type: LoadBalancer
-  status:
-    loadBalancer:
-      ingress:
-      - hostname: localhost
-# Service: hej-verden-words
+# hej-verden-words
 - apiVersion: v1
   kind: Service
   metadata:
@@ -62,7 +39,34 @@ items:
     type: ClusterIP
   status:
     loadBalancer: {}
-# Deployment: hej-verden-db
+# hej-verden-web, 'ekstern' adresse
+- apiVersion: v1
+  kind: Service
+  metadata:
+    labels:
+      app: service-web-published
+    name: web-published
+  spec:
+    clusterIP: 10.109.33.31
+    externalTrafficPolicy: Cluster
+    ports:
+    - name: 8094-tcp
+      nodePort: 31389
+      port: 8094
+      protocol: TCP
+      targetPort: 80
+    selector:
+      app: web
+    sessionAffinity: None
+    type: LoadBalancer
+  status:
+    loadBalancer:
+      ingress:
+      - hostname: localhost
+
+# Deployments:
+
+# hej-verden-db
 - apiVersion: apps/v1
   kind: Deployment
   metadata:    
@@ -85,7 +89,7 @@ items:
           name: db          
         dnsPolicy: ClusterFirst
         restartPolicy: Always  
-# Deployment: hej-verden-web
+# hej-verden-web
 - apiVersion: apps/v1
   kind: Deployment
   metadata:
@@ -111,7 +115,7 @@ items:
             protocol: TCP
         dnsPolicy: ClusterFirst
         restartPolicy: Always
-# Deployment: hej-verden-words
+# hej-verden-words
 - apiVersion: apps/v1
   kind: Deployment
   metadata:
