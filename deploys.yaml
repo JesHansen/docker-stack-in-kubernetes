@@ -3,7 +3,7 @@ items:
 
 # Services:
 
-# hej-verden-db
+# db
 - apiVersion: v1
   kind: Service
   metadata:
@@ -18,7 +18,7 @@ items:
     selector:
       app: db
 
-# hej-verden-words
+# words
 - apiVersion: v1
   kind: Service
   metadata:
@@ -33,7 +33,7 @@ items:
     selector:
       app: words
 
-# hej-verden-web, intern adresse
+# web, intern adresse
 - apiVersion: v1
   kind: Service
   metadata:
@@ -54,7 +54,7 @@ items:
   status:
     loadBalancer: {}
 
-# hej-verden-web, 'ekstern' adresse
+# web, 'ekstern' adresse
 - apiVersion: v1
   kind: Service
   metadata:
@@ -81,7 +81,7 @@ items:
 
 # Deployments:
 
-# hej-verden-db
+# backend-db
 - apiVersion: apps/v1
   kind: Deployment
   metadata:    
@@ -103,7 +103,7 @@ items:
         dnsPolicy: ClusterFirst
         restartPolicy: Always  
 
-# hej-verden-web
+# frontend-web
 - apiVersion: apps/v1
   kind: Deployment
   metadata:
@@ -128,7 +128,7 @@ items:
         dnsPolicy: ClusterFirst
         restartPolicy: Always
 
-# hej-verden-words
+# api-web
 - apiVersion: apps/v1
   kind: Deployment
   metadata:
