@@ -14,10 +14,6 @@ items:
       targetPort: 55555
     selector:
       app: db
-    sessionAffinity: None
-    type: ClusterIP
-  status:
-    loadBalancer: {}
 # Service: hej-verden-web, intern adresse
 - apiVersion: v1
   kind: Service
