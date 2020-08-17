@@ -11,10 +11,9 @@ items:
   spec:
     clusterIP: None
     ports:
-    - name: headless
-      port: 44321
+    - port: 44321 # Random port?      
+      targetPort: 44321 # Random port?
       protocol: TCP
-      targetPort: 44321
     selector:
       app: db
 
