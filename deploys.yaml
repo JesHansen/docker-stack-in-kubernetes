@@ -41,11 +41,9 @@ items:
       app: service-web-published
     name: web-published
   spec:
-    clusterIP: 10.109.33.31
     externalTrafficPolicy: Cluster
     ports:
     - name: 8094-tcp
-      nodePort: 31389
       port: 8094
       protocol: TCP
       targetPort: 80
