@@ -25,10 +25,9 @@ items:
   spec:
     clusterIP: None
     ports:
-    - name: headless
-      port: 55432
-      protocol: TCP
+    - port: 55432      
       targetPort: 55432
+      protocol: TCP
     selector:
       app: words
 
@@ -42,10 +41,9 @@ items:
   spec:
     externalTrafficPolicy: Cluster
     ports:
-    - name: 8094-tcp
-      port: 8094
-      protocol: TCP
+    - port: 8094
       targetPort: 80
+      protocol: TCP      
     selector:
       app: web
     type: LoadBalancer
