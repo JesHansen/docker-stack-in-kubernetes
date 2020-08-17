@@ -9,7 +9,7 @@ items:
   metadata:
     name: db
   spec:
-    clusterIP: None
+    clusterIP: None # Needs this or the service will not be created
     selector:
       app: db
 
@@ -19,7 +19,7 @@ items:
   metadata:
     name: words
   spec:
-    clusterIP: None
+    clusterIP: None # Needs this or the service will not be created
     selector:
       app: words
 
@@ -31,8 +31,8 @@ items:
   spec:
     externalTrafficPolicy: Cluster
     ports:
-    - port: 8094
-      targetPort: 80
+    - port: 8094 # The external IP, e.g. http://localhost:8094/
+      targetPort: 80 # The port the container is listening on for traffic
       protocol: TCP      
     selector:
       app: web
