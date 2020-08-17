@@ -3,41 +3,31 @@ items:
 
 # Services:
 
-# db service
+# internal db service
 - apiVersion: v1
   kind: Service
   metadata:
     name: db
   spec:
     clusterIP: None
-    ports:
-    - port: 44321 # Random port?      
-      targetPort: 44321 # Random port?
-      protocol: TCP
     selector:
       app: db
 
-# words service
+# internal words service
 - apiVersion: v1
   kind: Service
   metadata:
     name: words
   spec:
     clusterIP: None
-    ports:
-    - port: 55432      
-      targetPort: 55432
-      protocol: TCP
     selector:
       app: words
 
-# web frontend service
+# external web frontend service
 - apiVersion: v1
   kind: Service
   metadata:
-    labels:
-      app: service-web-published
-    name: web-published
+    name: web
   spec:
     externalTrafficPolicy: Cluster
     ports:
@@ -95,9 +85,6 @@ items:
         containers:
         - image: dockersamples/k8s-wordsmith-web
           name: web
-          ports:
-          - containerPort: 80
-            protocol: TCP
         dnsPolicy: ClusterFirst
         restartPolicy: Always
 
