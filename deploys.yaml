@@ -107,8 +107,6 @@ items:
 - apiVersion: apps/v1
   kind: Deployment
   metadata:
-    labels:
-      app: deployment-web      
     name: deployment-web
     namespace: default
   spec:
@@ -134,8 +132,6 @@ items:
 - apiVersion: apps/v1
   kind: Deployment
   metadata:
-    labels:
-      app: deployment-words
     name: deployment-words
   spec:
     replicas: 5
