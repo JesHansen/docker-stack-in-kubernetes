@@ -22,10 +22,6 @@ items:
 - apiVersion: v1
   kind: Service
   metadata:
-    labels:
-      com.docker.service.id: hej-verden-words
-      com.docker.service.name: words
-      com.docker.stack.namespace: hej-verden
     name: words
   spec:
     clusterIP: None
@@ -35,13 +31,7 @@ items:
       protocol: TCP
       targetPort: 55555
     selector:
-      com.docker.service.id: hej-verden-words
-      com.docker.service.name: words
-      com.docker.stack.namespace: hej-verden
-    sessionAffinity: None
-    type: ClusterIP
-  status:
-    loadBalancer: {}
+      app: words
 
 # hej-verden-web, intern adresse
 - apiVersion: v1
@@ -147,23 +137,17 @@ items:
   kind: Deployment
   metadata:
     labels:
-      com.docker.service.id: hej-verden-words
-      com.docker.service.name: words
-      com.docker.stack.namespace: hej-verden
-    name: words
+      app: deployment-words
+    name: deployment-words
   spec:
     replicas: 5
     selector:
       matchLabels:
-        com.docker.service.id: hej-verden-words
-        com.docker.service.name: words
-        com.docker.stack.namespace: hej-verden
+        app: words
     template:
       metadata:
         labels:
-          com.docker.service.id: hej-verden-words
-          com.docker.service.name: words
-          com.docker.stack.namespace: hej-verden
+          app: words
       spec:
         containers:
         - image: dockersamples/k8s-wordsmith-api
