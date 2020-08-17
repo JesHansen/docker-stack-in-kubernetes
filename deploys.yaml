@@ -33,27 +33,6 @@ items:
     selector:
       app: words
 
-# web, intern adresse
-- apiVersion: v1
-  kind: Service
-  metadata:
-    labels:
-      app: service-web
-    name: web
-  spec:
-    clusterIP: None
-    ports:
-    - name: headless
-      port: 55555
-      protocol: TCP
-      targetPort: 55555
-    selector:
-      app: web
-    sessionAffinity: None
-    type: ClusterIP
-  status:
-    loadBalancer: {}
-
 # web, 'ekstern' adresse
 - apiVersion: v1
   kind: Service
