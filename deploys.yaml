@@ -51,7 +51,6 @@ items:
       targetPort: 80
     selector:
       app: web
-    sessionAffinity: None
     type: LoadBalancer
   status:
     loadBalancer:
