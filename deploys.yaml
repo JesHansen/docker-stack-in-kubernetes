@@ -4,10 +4,6 @@ items:
 - apiVersion: v1
   kind: Service
   metadata:
-    labels:
-      com.docker.service.id: hej-verden-db
-      com.docker.service.name: db
-      com.docker.stack.namespace: hej-verden
     name: db
   spec:
     clusterIP: None
@@ -17,9 +13,7 @@ items:
       protocol: TCP
       targetPort: 55555
     selector:
-      com.docker.service.id: hej-verden-db
-      com.docker.service.name: db
-      com.docker.stack.namespace: hej-verden
+      app: db
     sessionAffinity: None
     type: ClusterIP
   status:
@@ -105,24 +99,18 @@ items:
   kind: Deployment
   metadata:    
     labels:
-      com.docker.service.id: hej-verden-db
-      com.docker.service.name: db
-      com.docker.stack.namespace: hej-verden
+      app: db-deployment
     name: db
     namespace: default    
   spec:    
     replicas: 1    
     selector:
       matchLabels:
-        com.docker.service.id: hej-verden-db
-        com.docker.service.name: db
-        com.docker.stack.namespace: hej-verden    
+        app: db
     template:
       metadata:        
         labels:
-          com.docker.service.id: hej-verden-db
-          com.docker.service.name: db
-          com.docker.stack.namespace: hej-verden
+          app: db
       spec:        
         containers:
         - image: dockersamples/k8s-wordsmith-db          
