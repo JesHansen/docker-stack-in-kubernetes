@@ -12,9 +12,9 @@ items:
     clusterIP: None
     ports:
     - name: headless
-      port: 55555
+      port: 44321
       protocol: TCP
-      targetPort: 55555
+      targetPort: 44321
     selector:
       app: db
 
@@ -27,9 +27,9 @@ items:
     clusterIP: None
     ports:
     - name: headless
-      port: 55555
+      port: 55432
       protocol: TCP
-      targetPort: 55555
+      targetPort: 55432
     selector:
       app: words
 
