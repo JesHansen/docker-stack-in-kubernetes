@@ -19,9 +19,7 @@ items:
   kind: Service
   metadata:
     labels:
-      com.docker.service.id: hej-verden-web
-      com.docker.service.name: web
-      com.docker.stack.namespace: hej-verden
+      app: service-web
     name: web
   spec:
     clusterIP: None
@@ -31,9 +29,7 @@ items:
       protocol: TCP
       targetPort: 55555
     selector:
-      com.docker.service.id: hej-verden-web
-      com.docker.service.name: web
-      com.docker.stack.namespace: hej-verden
+      app: web
     sessionAffinity: None
     type: ClusterIP
   status:
@@ -43,9 +39,7 @@ items:
   kind: Service
   metadata:
     labels:
-      com.docker.service.id: hej-verden-web
-      com.docker.service.name: web
-      com.docker.stack.namespace: hej-verden
+      app: service-web-published
     name: web-published
   spec:
     clusterIP: 10.109.33.31
@@ -57,9 +51,7 @@ items:
       protocol: TCP
       targetPort: 80
     selector:
-      com.docker.service.id: hej-verden-web
-      com.docker.service.name: web
-      com.docker.stack.namespace: hej-verden
+      app: web
     sessionAffinity: None
     type: LoadBalancer
   status:
@@ -118,24 +110,18 @@ items:
   kind: Deployment
   metadata:
     labels:
-      com.docker.service.id: hej-verden-web
-      com.docker.service.name: web
-      com.docker.stack.namespace: hej-verden
-    name: web
+      app: deployment-web      
+    name: deployment-web
     namespace: default
   spec:
     replicas: 1
     selector:
       matchLabels:
-        com.docker.service.id: hej-verden-web
-        com.docker.service.name: web
-        com.docker.stack.namespace: hej-verden
+        app: web        
     template:
       metadata:
         labels:
-          com.docker.service.id: hej-verden-web
-          com.docker.service.name: web
-          com.docker.stack.namespace: hej-verden
+          app: web
       spec:
         containers:
         - image: dockersamples/k8s-wordsmith-web
