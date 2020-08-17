@@ -85,9 +85,7 @@ items:
 - apiVersion: apps/v1
   kind: Deployment
   metadata:    
-    labels:
-      app: db-deployment
-    name: db
+    name: deployment-db
     namespace: default    
   spec:    
     replicas: 1    
